@@ -7,11 +7,11 @@ import { useNavigate } from "react-router";
 function Home() {
   const { oktaAuth } = useOktaAuth()
     const history = useNavigate();
-    oktaAuth.isAuthenticated().then(data => {
-        if (data) {
-            history('/routed');
-        }
-    });
+    // oktaAuth.isAuthenticated().then(data => {
+    //     if (data) {
+    //         history('/routed');
+    //     }
+    // });
 
     const handleSubmit = () => {
         oktaAuth.signInWithRedirect()
@@ -32,7 +32,7 @@ function Home() {
           </div>
         </div>
         <div className="right-side"> 
-         <img src={Hotel} alt="SVG" className="img-svg"/>
+         <img src="https://media-public.canva.com/t_WdI/MAFUnut_WdI/1/t.png" alt="SVG" className="img-svg"/>
         </div>
       </div>
     </div>

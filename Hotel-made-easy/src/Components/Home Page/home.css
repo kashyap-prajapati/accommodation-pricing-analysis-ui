@@ -5,7 +5,7 @@ body, h1, h2, h3, p, ul, li {
 }
 
 body {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: cursive;
 }
 
 /* Set a background color for the body */
@@ -25,7 +25,7 @@ body {
     border-left: 2px solid black;
     color: white;
     padding: 1vw; /* Use viewport units for responsive padding */
-    font-size: 1vw; /* Use viewport units for responsive font size */
+    font-size: 7vw; /* Use viewport units for responsive font size */
 }
 
 .content-split {
@@ -73,7 +73,7 @@ button {
 }
 
 .img-svg{
-    width: 10vw;
+    width: 16vw;
 }
 
 /* Media Query for larger screens */

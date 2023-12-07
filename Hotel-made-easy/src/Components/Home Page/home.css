@@ -1,0 +1,91 @@
+
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Set a background color for the body */
+body {
+    background-color: #0075B2;
+}
+
+.home {
+    padding: 5vw; /* Use viewport units for responsive padding */
+    color: white;
+}
+
+.logo-text {
+    position: absolute;
+    top: 10vw; /* Use viewport units for responsive positioning */
+    left: 5vw;
+    border-left: 2px solid black;
+    color: white;
+    padding: 1vw; /* Use viewport units for responsive padding */
+    font-size: 1vw; /* Use viewport units for responsive font size */
+}
+
+.content-split {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column; /* Adjusted for smaller screens */
+    position: relative; /* Adjusted for smaller screens */
+    top: 20vw; /* Use viewport units for responsive positioning */
+}
+
+.left-side,
+.right-side {
+    width: 100%; /* Adjusted for smaller screens */
+}
+
+.left-side .content h5 {
+    font-size: 1.5em;
+}
+
+.buttons {
+    display: flex;
+    align-items:flex-start;
+    justify-content: flex-start;
+    flex-direction: row; /* Adjusted for smaller screens */
+}
+
+button {
+    padding: 1vw 4vw; /* Use viewport units for responsive padding */
+    background-color: #000001;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin: 1vw;
+    font-weight:bold;
+}
+
+.right-side {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-svg{
+    width: 10vw;
+}
+
+/* Media Query for larger screens */
+@media screen and (min-width: 768px) {
+    .content-split {
+        flex-direction: row;
+    }
+
+    .left-side,
+    .right-side {
+        width: 50%;
+    }
+}
+
+

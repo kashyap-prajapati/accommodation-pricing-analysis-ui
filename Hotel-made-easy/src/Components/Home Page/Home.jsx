@@ -1,6 +1,6 @@
 import React from "react";
 import './home.css'
-import Hotel from '../../assets/react.svg'
+import HomeImage from '../../assets/home.png'
 import { useOktaAuth } from "@okta/okta-react"
 import { useNavigate } from "react-router";
 
@@ -32,7 +32,7 @@ function Home() {
           </div>
         </div>
         <div className="right-side"> 
-         <img src="https://media-public.canva.com/t_WdI/MAFUnut_WdI/1/t.png" alt="SVG" className="img-svg"/>
+         <img src={HomeImage} alt="SVG" className="img-svg"/>
         </div>
       </div>
     </div>

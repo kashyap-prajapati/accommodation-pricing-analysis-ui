@@ -1,6 +1,8 @@
 import React from "react";
 import HotelList from "./HotelList"
 import './search.css'
+import Paper from '@mui/material/Paper';
+import { Box, Container, CssBaseline } from "@mui/material";
 
 
 const SearchPage = ()=>{
@@ -14,7 +16,11 @@ const SearchPage = ()=>{
 
     return(
         <>
-            <HotelList hotels={hotels}/>
+        <Container>
+            <Box>
+                <HotelList hotels={hotels}/>
+            </Box>
+        </Container>
         </>
     )
 

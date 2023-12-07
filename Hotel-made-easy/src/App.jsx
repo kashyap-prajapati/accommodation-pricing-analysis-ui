@@ -3,6 +3,10 @@ import { Route, Routes, useNavigate } from "react-router";
 import Home from './Components/Home Page/Home';
 import { Security, LoginCallback, SecureRoute } from "@okta/okta-react"
 import { OktaAuth } from "@okta/okta-auth-js"
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 import SearchPage from './Components/Search Page/SearchPage';
 
 

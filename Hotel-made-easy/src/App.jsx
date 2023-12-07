@@ -3,6 +3,7 @@ import { Route, Routes, useNavigate } from "react-router";
 import Home from './Components/Home Page/Home';
 import { Security, LoginCallback, SecureRoute } from "@okta/okta-react"
 import { OktaAuth } from "@okta/okta-auth-js"
+import SearchPage from './Components/Search Page/SearchPage';
 
 
 function App() {
@@ -14,20 +15,19 @@ function App() {
   const oktaAuth = new OktaAuth({
     issuer: 'https://dev-21501745.okta.com/oauth2/default',
     clientId: '0oa2yynmptDXcaobB5d7',
-    redirectUri: 'http://127.0.0.1:5173/login/callback',
-    postLogoutRedirectUri: 'http://127.0.0.1:5173',
+    redirectUri: 'http://localhost:5173/login/callback',
+    postLogoutRedirectUri: 'http://localhost:5173',
     pkce: true,
     onAuthRequired: onAuthRequired,
     scopes: [
       "profile",
       "email",
       "openid",
-      "wsp-scope"
     ]
   });
 
   const restoreOriginalUri = async () => {
-    window.location.href = window.location.origin + '/dashboard'
+    window.location.href = window.location.origin + '/search'
   };
 
   return (
@@ -36,7 +36,10 @@ function App() {
         <Route path='/' element={<Home />} />
      </Routes>
      <Routes>
-       <Route path='/login/callback' element={LoginCallback}/>
+        <Route path='/search' element={<SearchPage/>} />
+     </Routes>
+     <Routes>
+       <Route path='/login/callback' element={<LoginCallback/>}/>
      </Routes>
      </Security>
   )

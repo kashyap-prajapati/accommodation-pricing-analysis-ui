@@ -14,6 +14,7 @@ function Home() {
     // });
 
     const handleSubmit = () => {
+      
         oktaAuth.signInWithRedirect()
     }
 
@@ -27,7 +28,7 @@ function Home() {
             Discover unbeatable deals on top-notch hotels in your area</h5>
           </div>
           <div className="buttons">
-            <button className="signUp"> Sign Up</button>
+          
             <button className="login" onClick={handleSubmit}>Login</button>
           </div>
         </div>

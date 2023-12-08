@@ -8,7 +8,6 @@ const FloatingLabelDatePicker = ({ setValue, label }) => {
  document.getElementsByClassName('input')[0]?.removeAttribute('readOnly')
  document.getElementsByClassName('input')[1]?.removeAttribute('readOnly')
   const [date, setDate] = useState('')
-  console.log({date})
   return (
     <div className="form-field">
           <div>
@@ -25,10 +24,11 @@ const FloatingLabelDatePicker = ({ setValue, label }) => {
               }}
               onChange={(value) => {
                 const startDate = new Date(value[0]);
-                // If you want to set the entire range as a string
                 const startDateString = startDate.toLocaleDateString();
-                setDate(startDateString)
-                setValue(startDateString)
+                const date = startDateString.split("/");
+                const newdate = date[2]+"-"+(date[0].length==1?("0"+date[0]):date[0])+"-"+(date[1].length==1?("0"+date[1]):date[1]);
+                setDate(newdate)
+                setValue(newdate)
                 // form.setFieldValue(field.name, value[0]);
               }}
               className="custom-input"

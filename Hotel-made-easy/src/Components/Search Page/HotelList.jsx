@@ -1,54 +1,73 @@
-import { Card, CardContent, CardHeader, CardMedia, Chip, Divider, Grid, Stack, Typography } from '@mui/material';
+import { Button, Card, CardContent, CardHeader, CardMedia, Chip, Divider, Grid, Stack, Typography } from '@mui/material';
 import React from 'react';
 import '../HotelList'
 import './search.css'
 
-const HotelCard = ({ imageUrl, rating, price, onAddToCart }) => {
+const HotelCard = ({hotel,url }) => {
+  const handleClick = ()=>{
+    window.open(url,"_blank");
+  }
+ 
   return (
-    <Card  style={{borderRadius: '10px', marginBottom:'1%'}}>
+    <Card key={hotel?.id}  style={{borderRadius: '10px', marginBottom:'1%',cursor:'pointer'}} onClick={handleClick}>
        <CardContent style={{padding:0,margin:'2%', height:'40%'}} >
             <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
                 <Grid item xs={6} sm={4} md={4} >
                         <CardMedia
-                            alt="GeeksforGeeks"
+                            alt={hotel?.name}
                             component="img"
-                            title="GeeksforGeeks"
+                            title={hotel?.name}
                             height="185"
-                            image='https://www.momondo.ca/rimg/himg/10/32/52/leonardo-2137519-Lobby_O-073906.jpg'
+                            image={hotel?.imageUrl}
                             style={{borderRadius:'2%'}}
                             >
                         </CardMedia>
                 </Grid>
                 
                 <Grid item xs={1} sm={2} md={6} style={{display: 'flex', alignItems:'flex-start', justifyContent:'space-around', flexDirection:'column'}}>
-                    <Typography gutterBottom variant="h4" component="h2" > 
-                       GeeksforGeeks 
+                    <Typography gutterBottom variant="h5" component="h3" style={{fontWeight:'bolder'}} > 
+                      {hotel?.name} 
                     </Typography>
                     <Typography gutterBottom variant='p' component='p' style={{fontWeight:'bold'}}>
-                      8.0 | Very good | 370 reviews
+                     Rating: {hotel?.score} | Reviews : {hotel?.reviewCount} | {hotel?.reviewDescription}
                     </Typography>
                     <Typography gutterBottom variant='p' component='p' style={{fontWeight:'bold'}}>
-                      Toronto
+                    Address: {hotel?.address}
                     </Typography>
                     <Typography gutterBottom variant='p' component='p' style={{fontWeight:'bold'}}>
-                      Address
+                     City:  {hotel?.city}
                     </Typography>
                     <Stack direction="row" spacing={1}  >
-                        <Chip label="Extra Soft" style={{borderRadius:'10px'}} />
-                        <Chip color="primary" label="Soft" />
-                        <Chip label="Medium" />
-                        <Chip label="Hard" />
+                      {
+                        hotel?.amenities?.map((item,index)=>{
+                          return(
+                            <React.Fragment key={hotel?.id+"_"+item}>
+                            {
+                              index<=4 ? <Chip color="primary" size='small' label={item} /> : null
+                            }
+                            
+                            </React.Fragment>
+                          )
+                        })
+                      }
+                       
                     </Stack>
                 </Grid>
                 <Divider orientation="vertical" style={{height:'13em',color:'black'}} />
-                <Grid item xs={1} sm={2} md={1} style={{display: 'flex', alignItems:'center', justifyContent:'center', flexDirection:'column' }}>
-                    <Typography variant='h4'>
-                        $25
+                <Grid item style={{display: 'flex', alignItems:'flex-end', justifyContent:'space-around', flexDirection:'column' }}>
+                    <Grid item>
+                    <Typography variant='h5'>
+                      $ {hotel?.price}
                     </Typography>
                     <Typography variant='p'>
-                       Mamondo
+                      {hotel?.source ? hotel?.source :"Momondo"}
                     </Typography>
+                    </Grid>
+                    <Grid item >
+                      <Button variant='outlined' size='small'>Visit Website</Button>
+                    </Grid>
                 </Grid>
+                
             </Grid>
         </CardContent>
       
@@ -56,18 +75,21 @@ const HotelCard = ({ imageUrl, rating, price, onAddToCart }) => {
   );
 };
 
-const HotelList = ({ hotels }) => {
+const HotelList = ({ hotels,sort }) => {
+
     return (
-      <div className="hotel-list">
-        {hotels.map((hotel, index) => (
+      <div className="hotel-list" >
+        {hotels.filter(item=>item.price!="").sort((item1,item2)=>
+        sort==2?item2?.price-item1?.price:item1?.price-item2?.price)
+        .map((hotel, index) => (
           <HotelCard
             key={index}
-            imageUrl={hotel.imageUrl}
-            rating={hotel.rating}
-            price={hotel.price}
+            hotel={hotel}
+            url={hotel?.url}
             // onAddToCart={() => alert(`Added ${hotel.name} to Cart`)}
           />
         ))}
+        {hotels && hotels.length==0 && <Typography variant='p' style={{fontSize:'2em',color:'white'}}>No result found</Typography>}
       </div>
     );
   };

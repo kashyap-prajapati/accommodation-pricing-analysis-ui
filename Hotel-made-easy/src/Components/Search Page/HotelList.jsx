@@ -1,23 +1,46 @@
-import { Card, CardContent, CardHeader, CardMedia } from '@mui/material';
+import { Card, CardContent, CardHeader, CardMedia, Chip, Divider, Grid, Stack, Typography } from '@mui/material';
 import React from 'react';
+
+import './search.css'
 
 const HotelCard = ({ imageUrl, rating, price, onAddToCart }) => {
   return (
-    <Card>
-        <CardHeader title={'The taj hotel'}></CardHeader>
-        <CardContent>
-            <div className="hotel-card">
-            <img src={imageUrl} alt="Hotel" className="hotel-image" />
-            <div className="hotel-info">
-                <div className="rating">Rating: {rating}</div>
-                <div className="price">Price: ${price}</div>
-                {/* <button onClick={onAddToCart}>Add to Cart</button> */}
-            </div>
-            </div>
+    <Card >
+       <CardContent style={{padding:0}}>
+            <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+                <Grid item xs={6} sm={4} md={4}>
+                        <CardMedia
+                            alt="GeeksforGeeks"
+                            component="img"
+                            title="GeeksforGeeks"
+                            height="150"
+                            image='https://www.momondo.ca/rimg/himg/10/32/52/leonardo-2137519-Lobby_O-073906.jpg?width=968&height=968&crop=true'>
+                        </CardMedia>
+                </Grid>
+                
+                <Grid item xs={1} sm={2} md={6}>
+                    <Typography gutterBottom variant="h5" component="h2"> 
+                       GeeksforGeeks 
+                    </Typography>
+                    <Typography gutterBottom variant="h5" component="h2"> 
+                       GeeksforGeeks 
+                    </Typography>
+                    <Stack direction="row" spacing={1} >
+                        <Chip label="Extra Soft" />
+                        <Chip color="primary" label="Soft" />
+                        <Chip label="Medium" />
+                        <Chip label="Hard" />
+                    </Stack>
+                </Grid>
+                <Divider orientation="vertical" style={{height:'10em',color:'black'}} />
+                <Grid item xs={1} sm={2} md={1}>
+                    <Typography>
+                        $25
+                    </Typography>
+                </Grid>
+            </Grid>
         </CardContent>
-        <CardMedia image={'https://www.canva.com/b716658d-c676-449e-9a86-fb495b387c5c'}>
-
-        </CardMedia>
+      
     </Card>
   );
 };

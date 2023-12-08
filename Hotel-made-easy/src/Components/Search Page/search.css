@@ -1,0 +1,17 @@
+label{
+    color:white !important;
+}
+
+input{
+    color: white !important;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+.css-1ff8729-MuiInputBase-root-MuiFilledInput-root:after{
+    border-bottom: 2px solid white !important;
+}
+
+.css-1ff8729-MuiInputBase-root-MuiFilledInput-root:before{
+    border-bottom: 1px solid white !important;
+}
